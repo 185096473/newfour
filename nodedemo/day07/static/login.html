@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	用户名:<input type="text" id="user" />
+	密码:<input type="text" id="pass" />
+	<button id="btn">登录</button>
+	<script type="text/javascript" src="./jquery.js"></script>
+	<script>
+		$(function () {
+			$("#btn").click(function () {
+				$.ajax({
+					// url 路径
+					url: "http://127.0.0.1:3000/login",
+					// type 类型
+					type: "get",
+					timeout: 2000,    //延时
+					async: false,    //  同步异步   false  
+					dataType: 'json',  //dataType  传输文件格式
+					crossDomain:true,
+					data: {  //数据
+						username: $("#user").val(),
+						password: $("#pass").val()
+					}
+					// done  完成
+				}).done(function (result) {
+				    
+					console.log(result)
+				})
+			})
+		})
+
+
+	</script>
+</body>
+
+</html>
